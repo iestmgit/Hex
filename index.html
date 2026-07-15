@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انتخابگر و کد رنگ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #f0f4ff 0%, #d9e2f5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem 3rem;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 1.8rem;
+            font-size: 0.95rem;
+        }
+
+        /* استایل انتخابگر رنگ */
+        input[type="color"] {
+            width: 100%;
+            height: 70px;
+            border: none;
+            padding: 0;
+            background: none;
+            cursor: pointer;
+            border-radius: 20px;
+            border: 3px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        input[type="color"]:hover {
+            transform: scale(1.02);
+            border-color: #94a3b8;
+        }
+
+        input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        input[type="color"]::-webkit-color-swatch {
+            border: none;
+            border-radius: 18px;
+        }
+
+        /* باکس نمایش رنگ انتخاب شده */
+        .color-preview-box {
+            width: 100%;
+            height: 80px;
+            border-radius: 20px;
+            margin: 18px 0 20px 0;
+            border: 3px solid #e2e8f0;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            background-color: #ff5733;
+            box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .color-preview-box:hover {
+            transform: scale(1.01);
+        }
+
+        /* نمایش کد رنگ */
+        .code-section {
+            background: #f1f5f9;
+            padding: 12px 20px;
+            border-radius: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid #e2e8f0;
+            margin-top: 10px;
+        }
+
+        .code-label {
+            color: #475569;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        #colorCode {
+            font-family: 'Courier New', monospace;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: 1px;
+            background: white;
+            padding: 4px 16px;
+            border-radius: 40px;
+            border: 1px solid #cbd5e1;
+            min-width: 100px;
+            display: inline-block;
+        }
+
+        /* دکمه کپی */
+        .copy-btn {
+            background: #1e293b;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 20px;
+            width: 100%;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .copy-btn:hover {
+            background: #0f172a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .toast-message {
+            margin-top: 12px;
+            color: #16a34a;
+            font-weight: 600;
+            font-size: 0.9rem;
+            height: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .toast-message.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎨 انتخابگر رنگ</h1>
+        <p class="subtitle">رنگ مد نظرتان را انتخاب کنید</p>
+
+        <!-- انتخابگر رنگ -->
+        <input type="color" id="colorPicker" value="#ff5733">
+
+        <!-- باکس نمایش رنگ -->
+        <div class="color-preview-box" id="colorPreview"></div>
+
+        <!-- نمایش کد HEX -->
+        <div class="code-section">
+            <span class="code-label">📋 کد رنگ :</span>
+            <span id="colorCode">#ff5733</span>
+        </div>
+
+        <!-- دکمه کپی -->
+        <button class="copy-btn" id="copyBtn">📌 کپی کردن کد</button>
+        <div class="toast-message" id="toast">✅ کد رنگ کپی شد!</div>
+    </div>
+
+    <script>
+        // دریافت المان‌ها
+        const colorPicker = document.getElementById('colorPicker');
+        const colorPreview = document.getElementById('colorPreview');
+        const colorCode = document.getElementById('colorCode');
+        const copyBtn = document.getElementById('copyBtn');
+        const toast = document.getElementById('toast');
+
+        // تابع برای به‌روزرسانی نمایش رنگ
+        function updateColor(color) {
+            // به‌روزرسانی باکس بزرگ
+            colorPreview.style.backgroundColor = color;
+            // به‌روزرسانی متن کد
+            colorCode.textContent = color;
+        }
+
+        // رویداد تغییر رنگ (وقتی کاربر رنگ جدیدی انتخاب می‌کند)
+        colorPicker.addEventListener('input', function(e) {
+            const selectedColor = e.target.value;
+            updateColor(selectedColor);
+        });
+
+        // رویداد کپی کردن
+        copyBtn.addEventListener('click', function() {
+            const color = colorCode.textContent;
+
+            // استفاده از Clipboard API برای کپی
+            navigator.clipboard.writeText(color).then(() => {
+                // نمایش پیام تایید
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                // روش جایگزین برای مرورگرهای قدیمی
+                const textArea = document.createElement('textarea');
+                textArea.value = color;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            });
+        });
+
+        // تنظیم رنگ اولیه در باکس نمایش
+        window.addEventListener('load', function() {
+            const initialColor = colorPicker.value;
+            updateColor(initialColor);
+        });
+    </script>
+
+</body>
+</html>
