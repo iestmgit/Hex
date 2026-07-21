@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کد هگزادسیمال | hex code</title>
+    
+    <!-- ====== تگ‌های سئو ====== -->
+    <title>ابزار آنلاین کد رنگ هگزادسیمال | انتخاب و کپی آسان Hex Color</title>
+    <meta name="description" content="با این ابزار ساده، کد هگز رنگ مورد نظر خود را انتخاب کرده و با یک کلیک کپی کنید. مناسب برای طراحان و توسعه‌دهندگان وب.">
+    <meta name="keywords" content="کد هگزادسیمال, کد رنگ, hex color, انتخاب رنگ, ابزار رنگ, طراحی وب, کپی کد رنگ">
+    <link rel="canonical" href="https://iestmgit.github.io/Hex/">
+    
+    <!-- ====== Open Graph برای اشتراک‌گذاری ====== -->
+    <meta property="og:title" content="ابزار آنلاین کد رنگ هگزادسیمال">
+    <meta property="og:description" content="رنگ مورد نظر را انتخاب کرده و کد هگز آن را با یک کلیک کپی کنید.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://iestmgit.github.io/Hex/">
+    
     <style>
         * {
             margin: 0;
@@ -18,6 +30,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
         .container {
@@ -27,16 +40,17 @@
             border-radius: 40px;
             box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.3);
             text-align: center;
-            max-width: 450px;
-            width: 90%;
+            max-width: 550px;
+            width: 100%;
             border: 1px solid rgba(255, 255, 255, 0.5);
             transition: all 0.3s ease;
         }
 
+        /* ====== ساختار هدرینگ برای سئو ====== */
         h1 {
             font-size: 1.8rem;
             color: #1e293b;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             font-weight: 700;
         }
 
@@ -46,7 +60,16 @@
             font-size: 0.95rem;
         }
 
-        /* استایل انتخابگر رنگ */
+        h2 {
+            font-size: 1.2rem;
+            color: #1e293b;
+            margin: 1.8rem 0 0.8rem 0;
+            font-weight: 600;
+            border-top: 2px dashed #e2e8f0;
+            padding-top: 1.5rem;
+        }
+
+        /* ====== ابزار انتخاب رنگ ====== */
         input[type="color"] {
             width: 100%;
             height: 70px;
@@ -73,7 +96,6 @@
             border-radius: 18px;
         }
 
-        /* باکس نمایش رنگ انتخاب شده */
         .color-preview-box {
             width: 100%;
             height: 80px;
@@ -89,7 +111,6 @@
             transform: scale(1.01);
         }
 
-        /* نمایش کد رنگ */
         .code-section {
             background: #f1f5f9;
             padding: 12px 20px;
@@ -99,6 +120,8 @@
             align-items: center;
             border: 2px solid #e2e8f0;
             margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .code-label {
@@ -121,7 +144,6 @@
             display: inline-block;
         }
 
-        /* دکمه کپی */
         .copy-btn {
             background: #1e293b;
             color: white;
@@ -161,84 +183,322 @@
         .toast-message.show {
             opacity: 1;
         }
+
+        /* ====== محتوای متنی برای سئو ====== */
+        .seo-content {
+            text-align: right;
+            color: #334155;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .seo-content p {
+            margin-bottom: 0.8rem;
+        }
+
+        .seo-content ul {
+            padding-right: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .seo-content ul li {
+            margin-bottom: 0.3rem;
+        }
+
+        .color-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .color-table th,
+        .color-table td {
+            border: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            text-align: center;
+        }
+
+        .color-table th {
+            background: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .color-swatch {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            vertical-align: middle;
+        }
+
+        .faq-item {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-right: 4px solid #94a3b8;
+        }
+
+        .faq-item strong {
+            color: #0f172a;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .faq-item p {
+            margin: 0;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        /* ====== استایل فوتر ====== */
+        .footer-legal {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+        .footer-legal a {
+            color: #1e293b;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            border-bottom: 2px solid #818cf8;
+            padding-bottom: 1px;
+        }
+        .footer-legal a:hover {
+            color: #4f46e5;
+            border-bottom-color: #4f46e5;
+        }
+        .footer-legal .legal-badge {
+            display: inline-block;
+            background: #f1f5f9;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        .footer-legal .all-rights {
+            letter-spacing: 0.5px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        /* ====== ریسپانسیو ====== */
+        @media (max-width: 500px) {
+            .container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+            #colorCode {
+                font-size: 1.2rem;
+                min-width: 80px;
+            }
+            .code-section {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>🎨کد هگزادسیمال | hex code🎨</h1>
-        <p class="subtitle">رنگ مد نظرتان را انتخاب کنید</p>
+        <!-- ====== عنوان اصلی (H1) ====== -->
+        <h1>🎨 ابزار انتخاب و کپی کد هگزادسیمال رنگ</h1>
+        <p class="subtitle">رنگ مد نظر خود را انتخاب کرده و کد Hex آن را کپی کنید</p>
 
-        <!-- انتخابگر رنگ -->
-        <input type="color" id="colorPicker" value="#ff5733">
+        <!-- ====== ابزار ====== -->
+        <input type="color" id="colorPicker" value="#ff5733" aria-label="انتخابگر رنگ">
+        <div class="color-preview-box" id="colorPreview" role="img" aria-label="پیش‌نمایش رنگ انتخاب شده"></div>
 
-        <!-- باکس نمایش رنگ -->
-        <div class="color-preview-box" id="colorPreview"></div>
-
-        <!-- نمایش کد HEX -->
         <div class="code-section">
             <span class="code-label">📋 کد رنگ :</span>
             <span id="colorCode">#ff5733</span>
         </div>
 
-        <!-- دکمه کپی -->
         <button class="copy-btn" id="copyBtn">📌 کپی کردن کد</button>
         <div class="toast-message" id="toast">✅ کد رنگ کپی شد!</div>
+
+        <!-- ====== محتوای غنی برای سئو ====== -->
+        <div class="seo-content">
+            <h2>🔍 کد هگزادسیمال (Hex Color) چیست؟</h2>
+            <p>
+                <strong>کد هگزادسیمال</strong> یا <strong>Hex Code</strong> یک روش استاندارد برای نمایش رنگ‌ها در طراحی وب و گرافیک است. 
+                این کد از ترکیب ۶ کاراکتر (حروف و اعداد) تشکیل شده که با علامت <strong>#</strong> شروع می‌شود. 
+                دو کاراکتر اول میزان <strong>قرمز (Red)</strong>، دو کاراکتر دوم میزان <strong>سبز (Green)</strong> 
+                و دو کاراکتر آخر میزان <strong>آبی (Blue)</strong> را مشخص می‌کنند.
+            </p>
+
+            <h2>🎯 کاربردهای کد هگز</h2>
+            <ul>
+                <li>طراحی رابط کاربری (UI) و تجربه کاربری (UX)</li>
+                <li>طراحی گرافیک و لوگو</li>
+                <li>برنامه‌نویسی وب با CSS و HTML</li>
+                <li>توسعه اپلیکیشن‌های موبایل</li>
+                <li>ویرایش تصاویر و ویدئو</li>
+            </ul>
+
+            <h2>📊 جدول رنگ‌های پرکاربرد</h2>
+            <table class="color-table">
+                <thead>
+                    <tr>
+                        <th>رنگ</th>
+                        <th>نمونه</th>
+                        <th>کد هگز</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>سفید</td>
+                        <td><span class="color-swatch" style="background:#FFFFFF;"></span></td>
+                        <td><code>#FFFFFF</code></td>
+                    </tr>
+                    <tr>
+                        <td>مشکی</td>
+                        <td><span class="color-swatch" style="background:#000000;"></span></td>
+                        <td><code>#000000</code></td>
+                    </tr>
+                    <tr>
+                        <td>قرمز</td>
+                        <td><span class="color-swatch" style="background:#FF0000;"></span></td>
+                        <td><code>#FF0000</code></td>
+                    </tr>
+                    <tr>
+                        <td>سبز</td>
+                        <td><span class="color-swatch" style="background:#00FF00;"></span></td>
+                        <td><code>#00FF00</code></td>
+                    </tr>
+                    <tr>
+                        <td>آبی</td>
+                        <td><span class="color-swatch" style="background:#0000FF;"></span></td>
+                        <td><code>#0000FF</code></td>
+                    </tr>
+                    <tr>
+                        <td>طلایی</td>
+                        <td><span class="color-swatch" style="background:#FFD700;"></span></td>
+                        <td><code>#FFD700</code></td>
+                    </tr>
+                    <tr>
+                        <td>صورتی</td>
+                        <td><span class="color-swatch" style="background:#FF69B4;"></span></td>
+                        <td><code>#FF69B4</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>❓ سوالات متداول</h2>
+            <div class="faq-item">
+                <strong>چگونه از این ابزار استفاده کنم؟</strong>
+                <p>روی جعبه رنگ کلیک کنید، رنگ مورد نظر را انتخاب کنید. سپس کد هگز به‌صورت خودکار به‌روز می‌شود. با کلیک روی دکمه «کپی کردن کد»، آن را در کلیپ‌بورد خود ذخیره کنید.</p>
+            </div>
+            <div class="faq-item">
+                <strong>آیا کد هگز با RGB تفاوت دارد؟</strong>
+                <p>بله، کد هگز یک نمایش ۱۶-تایی (Hexadecimal) از مقادیر RGB است. برای مثال رنگ قرمز در هگز <code>#FF0000</code> و در RGB معادل <code>rgb(255, 0, 0)</code> است.</p>
+            </div>
+            <div class="faq-item">
+                <strong>آیا این ابزار رایگان است؟</strong>
+                <p>بله، این ابزار کاملاً رایگان و بدون نیاز به ثبت‌نام است. می‌توانید از آن در هر پروژه‌ای استفاده کنید.</p>
+            </div>
+
+            <!-- ====== فوتر با حقوق مالکیت و لینک به کمپانی ====== -->
+            <div class="footer-legal">
+                <div class="legal-badge">
+                    © تمامی حقوق مادی و معنوی
+                </div>
+                <p style="margin-bottom: 0.3rem;">
+                    متعلق به 
+                    <a href="https://iestmgit.github.io/iestm-website/" target="_blank" rel="noopener noreferrer">
+                        کمپانی IESTM
+                    </a>
+                    می‌باشد.
+                </p>
+                <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem;">
+                    هرگونه کپی‌برداری یا بازنشر بدون مجوز کتبی ممنوع است.
+                </p>
+                <p class="all-rights">
+                    IESTM · All Rights Reserved
+                </p>
+            </div>
+        </div>
     </div>
 
     <script>
-        // دریافت المان‌ها
-        const colorPicker = document.getElementById('colorPicker');
-        const colorPreview = document.getElementById('colorPreview');
-        const colorCode = document.getElementById('colorCode');
-        const copyBtn = document.getElementById('copyBtn');
-        const toast = document.getElementById('toast');
+        (function() {
+            'use strict';
 
-        // تابع برای به‌روزرسانی نمایش رنگ
-        function updateColor(color) {
-            // به‌روزرسانی باکس بزرگ
-            colorPreview.style.backgroundColor = color;
-            // به‌روزرسانی متن کد
-            colorCode.textContent = color;
-        }
+            const colorPicker = document.getElementById('colorPicker');
+            const colorPreview = document.getElementById('colorPreview');
+            const colorCode = document.getElementById('colorCode');
+            const copyBtn = document.getElementById('copyBtn');
+            const toast = document.getElementById('toast');
 
-        // رویداد تغییر رنگ (وقتی کاربر رنگ جدیدی انتخاب می‌کند)
-        colorPicker.addEventListener('input', function(e) {
-            const selectedColor = e.target.value;
-            updateColor(selectedColor);
-        });
+            let toastTimeout = null;
 
-        // رویداد کپی کردن
-        copyBtn.addEventListener('click', function() {
-            const color = colorCode.textContent;
+            function updateColor(color) {
+                colorPreview.style.backgroundColor = color;
+                colorCode.textContent = color;
+            }
 
-            // استفاده از Clipboard API برای کپی
-            navigator.clipboard.writeText(color).then(() => {
-                // نمایش پیام تایید
+            function showToast(message) {
+                toast.textContent = message || '✅ کد رنگ کپی شد!';
                 toast.classList.add('show');
-                setTimeout(() => {
+                clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
                     toast.classList.remove('show');
-                }, 2000);
-            }).catch(err => {
-                // روش جایگزین برای مرورگرهای قدیمی
-                const textArea = document.createElement('textarea');
-                textArea.value = color;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 2000);
+                }, 2500);
+            }
+
+            // انتخاب رنگ
+            colorPicker.addEventListener('input', function(e) {
+                updateColor(e.target.value);
             });
-        });
 
-        // تنظیم رنگ اولیه در باکس نمایش
-        window.addEventListener('load', function() {
-            const initialColor = colorPicker.value;
-            updateColor(initialColor);
-        });
+            // کپی کردن
+            copyBtn.addEventListener('click', function() {
+                const color = colorCode.textContent;
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(color)
+                        .then(() => showToast('✅ کد رنگ کپی شد!'))
+                        .catch(() => fallbackCopy(color));
+                } else {
+                    fallbackCopy(color);
+                }
+            });
+
+            function fallbackCopy(text) {
+                try {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = text;
+                    textArea.style.position = 'fixed';
+                    textArea.style.opacity = '0';
+                    textArea.style.pointerEvents = 'none';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    showToast('✅ کد رنگ کپی شد!');
+                } catch (err) {
+                    showToast('❌ خطا در کپی کردن!');
+                }
+            }
+
+            // تنظیم رنگ اولیه
+            window.addEventListener('load', function() {
+                updateColor(colorPicker.value);
+            });
+
+        })();
     </script>
 
 </body>
