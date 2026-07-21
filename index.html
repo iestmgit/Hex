@@ -6,85 +6,156 @@
     
     <!-- ====== تگ‌های سئو ====== -->
     <title>ابزار آنلاین کد رنگ هگزادسیمال | انتخاب و کپی آسان Hex Color</title>
-    <meta name="description" content="با این ابزار ساده، کد هگز رنگ مورد نظر خود را انتخاب کرده و با یک کلیک کپی کنید. مناسب برای طراحان و توسعه‌دهندگان وب.">
-    <meta name="keywords" content="کد هگزادسیمال, کد رنگ, hex color, انتخاب رنگ, ابزار رنگ, طراحی وب, کپی کد رنگ">
+    <meta name="description" content="ابزار حرفه‌ای انتخاب و کپی کد هگز رنگ با قابلیت‌های پیشرفته: نمایش RGB و HSL، تاریخچه رنگ، تم تاریک و اشتراک‌گذاری. مناسب برای طراحان و توسعه‌دهندگان.">
+    <meta name="keywords" content="کد هگزادسیمال, کد رنگ, hex color, انتخاب رنگ, ابزار رنگ, طراحی وب, کپی کد رنگ, RGB, HSL">
     <link rel="canonical" href="https://iestmgit.github.io/Hex/">
     
-    <!-- ====== Open Graph برای اشتراک‌گذاری ====== -->
-    <meta property="og:title" content="ابزار آنلاین کد رنگ هگزادسیمال">
-    <meta property="og:description" content="رنگ مورد نظر را انتخاب کرده و کد هگز آن را با یک کلیک کپی کنید.">
+    <!-- ====== Open Graph ====== -->
+    <meta property="og:title" content="ابزار حرفه‌ای کد رنگ هگزادسیمال | IESTM">
+    <meta property="og:description" content="رنگ مورد نظر را انتخاب کنید و کد هگز، RGB و HSL آن را با یک کلیک کپی کنید.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://iestmgit.github.io/Hex/">
     
+    <!-- ====== فونت آیکون ====== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
     <style>
+        /* ============================================================
+                   RESET & BASE
+                   ============================================================ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-gradient-start: #f0f4ff;
+            --bg-gradient-end: #d9e2f5;
+            --container-bg: rgba(255, 255, 255, 0.85);
+            --container-border: rgba(255, 255, 255, 0.5);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --card-bg: #f8fafc;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --btn-bg: #1e293b;
+            --btn-hover: #0f172a;
+            --accent-color: #818cf8;
+            --accent-hover: #4f46e5;
+            --toast-color: #16a34a;
+            --transition-speed: 0.3s;
+            --radius-lg: 40px;
+            --radius-md: 20px;
+            --radius-sm: 12px;
+            --radius-card: 16px;
+        }
+
+        /* تم تاریک */
+        [data-theme="dark"] {
+            --bg-gradient-start: #0b1120;
+            --bg-gradient-end: #1a2332;
+            --container-bg: rgba(18, 28, 46, 0.92);
+            --container-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #e8edf5;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --shadow-color: rgba(0, 0, 0, 0.6);
+            --btn-bg: #3b4a6b;
+            --btn-hover: #4f5f82;
+            --toast-color: #4ade80;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(145deg, #f0f4ff 0%, #d9e2f5 100%);
+            background: linear-gradient(145deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            transition: background var(--transition-speed) ease;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
+            background: var(--container-bg);
+            backdrop-filter: blur(12px);
             padding: 2.5rem 3rem;
-            border-radius: 40px;
-            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.3);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 25px 50px -8px var(--shadow-color);
             text-align: center;
-            max-width: 550px;
+            max-width: 600px;
             width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
+            border: 1px solid var(--container-border);
+            transition: all var(--transition-speed) ease;
         }
 
-        /* ====== ساختار هدرینگ برای سئو ====== */
+        /* ============================================================
+                   HEADER
+                   ============================================================ */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         h1 {
             font-size: 1.8rem;
-            color: #1e293b;
-            margin-bottom: 0.3rem;
+            color: var(--text-primary);
             font-weight: 700;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 60px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all var(--transition-speed) ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+            color: var(--text-primary);
         }
 
         .subtitle {
-            color: #64748b;
+            color: var(--text-secondary);
             margin-bottom: 1.8rem;
             font-size: 0.95rem;
+            transition: color var(--transition-speed) ease;
         }
 
-        h2 {
-            font-size: 1.2rem;
-            color: #1e293b;
-            margin: 1.8rem 0 0.8rem 0;
-            font-weight: 600;
-            border-top: 2px dashed #e2e8f0;
-            padding-top: 1.5rem;
-        }
-
-        /* ====== ابزار انتخاب رنگ ====== */
+        /* ============================================================
+                   COLOR PICKER
+                   ============================================================ */
         input[type="color"] {
             width: 100%;
-            height: 70px;
+            height: 65px;
             border: none;
             padding: 0;
             background: none;
             cursor: pointer;
-            border-radius: 20px;
-            border: 3px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            border: 3px solid var(--border-color);
             transition: all 0.2s ease;
         }
 
         input[type="color"]:hover {
             transform: scale(1.02);
-            border-color: #94a3b8;
+            border-color: var(--accent-color);
         }
 
         input[type="color"]::-webkit-color-swatch-wrapper {
@@ -98,98 +169,255 @@
 
         .color-preview-box {
             width: 100%;
-            height: 80px;
-            border-radius: 20px;
-            margin: 18px 0 20px 0;
-            border: 3px solid #e2e8f0;
-            transition: background-color 0.2s ease, transform 0.2s ease;
+            height: 75px;
+            border-radius: var(--radius-md);
+            margin: 16px 0 18px 0;
+            border: 3px solid var(--border-color);
+            transition: background-color 0.2s ease, border-color var(--transition-speed) ease;
             background-color: #ff5733;
             box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
-        .color-preview-box:hover {
-            transform: scale(1.01);
-        }
-
-        .code-section {
-            background: #f1f5f9;
-            padding: 12px 20px;
-            border-radius: 60px;
+        /* ============================================================
+                   CODE LIST - لیست عمودی یکدست
+                   ============================================================ */
+        .code-list {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .code-item {
+            background: var(--card-bg);
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-card);
+            padding: 12px 18px;
+            display: flex;
             align-items: center;
-            border: 2px solid #e2e8f0;
-            margin-top: 10px;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            gap: 12px;
             flex-wrap: wrap;
-            gap: 10px;
         }
 
-        .code-label {
-            color: #475569;
-            font-weight: 600;
-            font-size: 0.9rem;
+        .code-item:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 14px rgba(129, 140, 248, 0.10);
+            transform: translateY(-1px);
         }
 
-        #colorCode {
-            font-family: 'Courier New', monospace;
-            font-size: 1.6rem;
+        .code-item .code-label {
+            color: var(--text-secondary);
             font-weight: 700;
-            color: #0f172a;
-            letter-spacing: 1px;
-            background: white;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            min-width: 60px;
+        }
+
+        .code-item .code-value {
+            font-family: 'Courier New', 'Fira Code', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.3px;
+            background: var(--container-bg);
             padding: 4px 16px;
             border-radius: 40px;
-            border: 1px solid #cbd5e1;
-            min-width: 100px;
-            display: inline-block;
+            border: 1px solid var(--border-color);
+            flex: 1;
+            min-width: 90px;
+            text-align: center;
+            transition: all var(--transition-speed) ease;
         }
 
-        .copy-btn {
-            background: #1e293b;
+        .code-item .copy-mini {
+            background: var(--btn-bg);
             color: white;
             border: none;
-            padding: 10px 25px;
+            border-radius: 40px;
+            padding: 5px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .code-item .copy-mini:hover {
+            background: var(--accent-color);
+            transform: scale(1.04);
+        }
+
+        .code-item .copy-mini i {
+            font-size: 0.8rem;
+        }
+
+        /* ============================================================
+                   BUTTONS
+                   ============================================================ */
+        .btn-primary {
+            background: var(--btn-bg);
+            color: white;
+            border: none;
+            padding: 12px 25px;
             border-radius: 60px;
             font-weight: 700;
             font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.2s ease;
-            margin-top: 20px;
+            margin-top: 16px;
             width: 100%;
             letter-spacing: 1px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .copy-btn:hover {
-            background: #0f172a;
+        .btn-primary:hover {
+            background: var(--btn-hover);
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
         }
 
-        .copy-btn:active {
+        .btn-primary:active {
             transform: scale(0.95);
         }
 
         .toast-message {
             margin-top: 12px;
-            color: #16a34a;
+            color: var(--toast-color);
             font-weight: 600;
             font-size: 0.9rem;
             height: 20px;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity var(--transition-speed) ease;
         }
 
         .toast-message.show {
             opacity: 1;
         }
 
-        /* ====== محتوای متنی برای سئو ====== */
+        /* ============================================================
+                   HISTORY
+                   ============================================================ */
+        .history-section {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 2px dashed var(--border-color);
+        }
+
+        .history-section h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        .history-colors {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .history-color {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .history-color:hover {
+            transform: scale(1.15);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 20px rgba(129, 140, 248, 0.25);
+        }
+
+        .history-color .tooltip {
+            position: absolute;
+            bottom: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--btn-bg);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.6rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .history-color:hover .tooltip {
+            opacity: 1;
+        }
+
+        /* ============================================================
+                   SHARE
+                   ============================================================ */
+        .share-section {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 18px;
+            border-radius: 60px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .share-telegram { background: #0088cc; }
+        .share-twitter { background: #1DA1F2; }
+        .share-whatsapp { background: #25D366; }
+        .share-copy { background: var(--btn-bg); color: white; }
+
+        /* ============================================================
+                   SEO CONTENT
+                   ============================================================ */
         .seo-content {
             text-align: right;
-            color: #334155;
+            color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.8;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--border-color);
+            transition: color var(--transition-speed) ease;
+        }
+
+        .seo-content h2 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.8rem 0;
+            font-weight: 600;
+            transition: color var(--transition-speed) ease;
         }
 
         .seo-content p {
@@ -214,14 +442,16 @@
 
         .color-table th,
         .color-table td {
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
             padding: 8px 12px;
             text-align: center;
+            color: var(--text-secondary);
         }
 
         .color-table th {
-            background: #f1f5f9;
+            background: var(--card-bg);
             font-weight: 600;
+            color: var(--text-primary);
         }
 
         .color-swatch {
@@ -229,113 +459,217 @@
             width: 25px;
             height: 25px;
             border-radius: 6px;
-            border: 1px solid #cbd5e1;
+            border: 1px solid var(--border-color);
             vertical-align: middle;
         }
 
         .faq-item {
-            background: #f8fafc;
-            border-radius: 12px;
+            background: var(--card-bg);
+            border-radius: var(--radius-sm);
             padding: 12px 16px;
             margin-bottom: 10px;
-            border-right: 4px solid #94a3b8;
+            border-right: 4px solid var(--accent-color);
+            transition: background var(--transition-speed) ease;
         }
 
         .faq-item strong {
-            color: #0f172a;
+            color: var(--text-primary);
             display: block;
             margin-bottom: 4px;
         }
 
         .faq-item p {
             margin: 0;
-            color: #475569;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
-        /* ====== استایل فوتر ====== */
+        /* ============================================================
+                   FOOTER
+                   ============================================================ */
         .footer-legal {
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             padding-top: 1.5rem;
-            border-top: 2px solid #e2e8f0;
+            border-top: 2px solid var(--border-color);
             text-align: center;
             font-size: 0.9rem;
-            color: #475569;
+            color: var(--text-secondary);
+            transition: all var(--transition-speed) ease;
         }
+
         .footer-legal a {
-            color: #1e293b;
+            color: var(--accent-color);
             font-weight: 700;
             text-decoration: none;
             transition: color 0.2s ease;
-            border-bottom: 2px solid #818cf8;
+            border-bottom: 2px solid var(--accent-color);
             padding-bottom: 1px;
         }
+
         .footer-legal a:hover {
-            color: #4f46e5;
-            border-bottom-color: #4f46e5;
+            color: var(--accent-hover);
+            border-bottom-color: var(--accent-hover);
         }
+
         .footer-legal .legal-badge {
             display: inline-block;
-            background: #f1f5f9;
+            background: var(--card-bg);
             padding: 0.3rem 1.2rem;
             border-radius: 40px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--border-color);
             margin-bottom: 0.5rem;
             font-size: 0.8rem;
-            color: #64748b;
+            color: var(--text-muted);
         }
+
         .footer-legal .all-rights {
             letter-spacing: 0.5px;
             font-size: 0.8rem;
-            color: #94a3b8;
+            color: var(--text-muted);
         }
 
-        /* ====== ریسپانسیو ====== */
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
         @media (max-width: 500px) {
             .container {
                 padding: 1.5rem;
             }
             h1 {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
-            #colorCode {
-                font-size: 1.2rem;
-                min-width: 80px;
+            .code-item {
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
             }
-            .code-section {
+            .code-item .code-value {
+                font-size: 1rem;
+                min-width: 60px;
+                width: 100%;
+            }
+            .code-item .copy-mini {
+                width: 100%;
+                justify-content: center;
+            }
+            .header-top {
                 flex-direction: column;
                 align-items: stretch;
-                text-align: center;
+            }
+            .theme-toggle {
+                justify-content: center;
+            }
+            .share-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .share-btn {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- ====== عنوان اصلی (H1) ====== -->
-        <h1>🎨 ابزار انتخاب و کپی کد هگزادسیمال رنگ</h1>
-        <p class="subtitle">رنگ مد نظر خود را انتخاب کرده و کد Hex آن را کپی کنید</p>
+    <div class="container" id="appContainer">
 
-        <!-- ====== ابزار ====== -->
+        <!-- ============================================================
+        HEADER
+        ============================================================ -->
+        <div class="header-top">
+            <h1>🎨 ابزار کد رنگ هگزادسیمال</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+                <i class="fas fa-moon"></i>
+                <span id="themeLabel">تم تاریک</span>
+            </button>
+        </div>
+        <p class="subtitle">رنگ مد نظر را انتخاب کنید | کد Hex، RGB و HSL را کپی کنید</p>
+
+        <!-- ============================================================
+        COLOR PICKER
+        ============================================================ -->
         <input type="color" id="colorPicker" value="#ff5733" aria-label="انتخابگر رنگ">
         <div class="color-preview-box" id="colorPreview" role="img" aria-label="پیش‌نمایش رنگ انتخاب شده"></div>
 
-        <div class="code-section">
-            <span class="code-label">📋 کد رنگ :</span>
-            <span id="colorCode">#ff5733</span>
+        <!-- ============================================================
+        CODE LIST - لیست عمودی یکدست
+        ============================================================ -->
+        <div class="code-list">
+            <!-- HEX -->
+            <div class="code-item">
+                <span class="code-label">📋 HEX</span>
+                <span class="code-value" id="hexCode">#ff5733</span>
+                <button class="copy-mini" data-target="hexCode">
+                    <i class="far fa-copy"></i> کپی
+                </button>
+            </div>
+
+            <!-- RGB -->
+            <div class="code-item">
+                <span class="code-label">🎨 RGB</span>
+                <span class="code-value" id="rgbCode">rgb(255, 87, 51)</span>
+                <button class="copy-mini" data-target="rgbCode">
+                    <i class="far fa-copy"></i> کپی
+                </button>
+            </div>
+
+            <!-- HSL -->
+            <div class="code-item">
+                <span class="code-label">🌈 HSL</span>
+                <span class="code-value" id="hslCode">hsl(11, 100%, 60%)</span>
+                <button class="copy-mini" data-target="hslCode">
+                    <i class="far fa-copy"></i> کپی
+                </button>
+            </div>
         </div>
 
-        <button class="copy-btn" id="copyBtn">📌 کپی کردن کد</button>
-        <div class="toast-message" id="toast">✅ کد رنگ کپی شد!</div>
+        <!-- ============================================================
+        MAIN BUTTONS
+        ============================================================ -->
+        <button class="btn-primary" id="copyBtn">📌 کپی کردن تمام کدها</button>
+        <div class="toast-message" id="toast">✅ کدها کپی شدند!</div>
 
-        <!-- ====== محتوای غنی برای سئو ====== -->
+        <!-- ============================================================
+        SHARE SECTION
+        ============================================================ -->
+        <div class="share-section">
+            <button class="share-btn share-telegram" id="shareTelegram">
+                <i class="fab fa-telegram-plane"></i> تلگرام
+            </button>
+            <button class="share-btn share-twitter" id="shareTwitter">
+                <i class="fab fa-twitter"></i> توییتر
+            </button>
+            <button class="share-btn share-whatsapp" id="shareWhatsapp">
+                <i class="fab fa-whatsapp"></i> واتساپ
+            </button>
+            <button class="share-btn share-copy" id="shareCopyLink">
+                <i class="fas fa-link"></i> کپی لینک
+            </button>
+        </div>
+
+        <!-- ============================================================
+        HISTORY
+        ============================================================ -->
+        <div class="history-section">
+            <h3>📜 تاریخچه رنگ‌های اخیر</h3>
+            <div class="history-colors" id="historyColors"></div>
+        </div>
+
+        <!-- ============================================================
+        SEO CONTENT
+        ============================================================ -->
         <div class="seo-content">
             <h2>🔍 کد هگزادسیمال (Hex Color) چیست؟</h2>
             <p>
-                <strong>کد هگزادسیمال</strong> یا <strong>Hex Code</strong> یک روش استاندارد برای نمایش رنگ‌ها در طراحی وب و گرافیک است. 
-                این کد از ترکیب ۶ کاراکتر (حروف و اعداد) تشکیل شده که با علامت <strong>#</strong> شروع می‌شود. 
-                دو کاراکتر اول میزان <strong>قرمز (Red)</strong>، دو کاراکتر دوم میزان <strong>سبز (Green)</strong> 
+                <strong>کد هگزادسیمال</strong> یا <strong>Hex Code</strong> یک روش استاندارد برای نمایش رنگ‌ها در طراحی وب و گرافیک است.
+                این کد از ترکیب ۶ کاراکتر (حروف و اعداد) تشکیل شده که با علامت <strong>#</strong> شروع می‌شود.
+                دو کاراکتر اول میزان <strong>قرمز (Red)</strong>، دو کاراکتر دوم میزان <strong>سبز (Green)</strong>
                 و دو کاراکتر آخر میزان <strong>آبی (Blue)</strong> را مشخص می‌کنند.
             </p>
 
@@ -358,48 +692,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>سفید</td>
-                        <td><span class="color-swatch" style="background:#FFFFFF;"></span></td>
-                        <td><code>#FFFFFF</code></td>
-                    </tr>
-                    <tr>
-                        <td>مشکی</td>
-                        <td><span class="color-swatch" style="background:#000000;"></span></td>
-                        <td><code>#000000</code></td>
-                    </tr>
-                    <tr>
-                        <td>قرمز</td>
-                        <td><span class="color-swatch" style="background:#FF0000;"></span></td>
-                        <td><code>#FF0000</code></td>
-                    </tr>
-                    <tr>
-                        <td>سبز</td>
-                        <td><span class="color-swatch" style="background:#00FF00;"></span></td>
-                        <td><code>#00FF00</code></td>
-                    </tr>
-                    <tr>
-                        <td>آبی</td>
-                        <td><span class="color-swatch" style="background:#0000FF;"></span></td>
-                        <td><code>#0000FF</code></td>
-                    </tr>
-                    <tr>
-                        <td>طلایی</td>
-                        <td><span class="color-swatch" style="background:#FFD700;"></span></td>
-                        <td><code>#FFD700</code></td>
-                    </tr>
-                    <tr>
-                        <td>صورتی</td>
-                        <td><span class="color-swatch" style="background:#FF69B4;"></span></td>
-                        <td><code>#FF69B4</code></td>
-                    </tr>
+                    <tr><td>سفید</td><td><span class="color-swatch" style="background:#FFFFFF;"></span></td><td><code>#FFFFFF</code></td></tr>
+                    <tr><td>مشکی</td><td><span class="color-swatch" style="background:#000000;"></span></td><td><code>#000000</code></td></tr>
+                    <tr><td>قرمز</td><td><span class="color-swatch" style="background:#FF0000;"></span></td><td><code>#FF0000</code></td></tr>
+                    <tr><td>سبز</td><td><span class="color-swatch" style="background:#00FF00;"></span></td><td><code>#00FF00</code></td></tr>
+                    <tr><td>آبی</td><td><span class="color-swatch" style="background:#0000FF;"></span></td><td><code>#0000FF</code></td></tr>
+                    <tr><td>طلایی</td><td><span class="color-swatch" style="background:#FFD700;"></span></td><td><code>#FFD700</code></td></tr>
+                    <tr><td>صورتی</td><td><span class="color-swatch" style="background:#FF69B4;"></span></td><td><code>#FF69B4</code></td></tr>
                 </tbody>
             </table>
 
             <h2>❓ سوالات متداول</h2>
             <div class="faq-item">
                 <strong>چگونه از این ابزار استفاده کنم؟</strong>
-                <p>روی جعبه رنگ کلیک کنید، رنگ مورد نظر را انتخاب کنید. سپس کد هگز به‌صورت خودکار به‌روز می‌شود. با کلیک روی دکمه «کپی کردن کد»، آن را در کلیپ‌بورد خود ذخیره کنید.</p>
+                <p>روی جعبه رنگ کلیک کنید، رنگ مورد نظر را انتخاب کنید. سپس کدهای HEX، RGB و HSL به‌صورت خودکار به‌روز می‌شوند. با کلیک روی دکمه «کپی کردن تمام کدها»، همه را در کلیپ‌بورد ذخیره کنید.</p>
             </div>
             <div class="faq-item">
                 <strong>آیا کد هگز با RGB تفاوت دارد؟</strong>
@@ -410,19 +716,19 @@
                 <p>بله، این ابزار کاملاً رایگان و بدون نیاز به ثبت‌نام است. می‌توانید از آن در هر پروژه‌ای استفاده کنید.</p>
             </div>
 
-            <!-- ====== فوتر با حقوق مالکیت و لینک به کمپانی ====== -->
+            <!-- ====== FOOTER ====== -->
             <div class="footer-legal">
                 <div class="legal-badge">
                     © تمامی حقوق مادی و معنوی
                 </div>
                 <p style="margin-bottom: 0.3rem;">
-                    متعلق به 
+                    متعلق به
                     <a href="https://iestmgit.github.io/iestm-website/" target="_blank" rel="noopener noreferrer">
                         کمپانی IESTM
                     </a>
                     می‌باشد.
                 </p>
-                <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem;">
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">
                     هرگونه کپی‌برداری یا بازنشر بدون مجوز کتبی ممنوع است.
                 </p>
                 <p class="all-rights">
@@ -432,25 +738,136 @@
         </div>
     </div>
 
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
     <script>
         (function() {
             'use strict';
 
+            // ============================================================
+            // ELEMENTS
+            // ============================================================
             const colorPicker = document.getElementById('colorPicker');
             const colorPreview = document.getElementById('colorPreview');
-            const colorCode = document.getElementById('colorCode');
+            const hexCode = document.getElementById('hexCode');
+            const rgbCode = document.getElementById('rgbCode');
+            const hslCode = document.getElementById('hslCode');
             const copyBtn = document.getElementById('copyBtn');
             const toast = document.getElementById('toast');
+            const historyColors = document.getElementById('historyColors');
+            const themeToggle = document.getElementById('themeToggle');
+            const themeLabel = document.getElementById('themeLabel');
 
             let toastTimeout = null;
+            let colorHistory = [];
 
-            function updateColor(color) {
-                colorPreview.style.backgroundColor = color;
-                colorCode.textContent = color;
+            // ============================================================
+            // COLOR CONVERSION
+            // ============================================================
+            function hexToRgb(hex) {
+                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: parseInt(result[1], 16),
+                    g: parseInt(result[2], 16),
+                    b: parseInt(result[3], 16)
+                } : null;
             }
 
+            function rgbToHsl(r, g, b) {
+                r /= 255;
+                g /= 255;
+                b /= 255;
+                const max = Math.max(r, g, b);
+                const min = Math.min(r, g, b);
+                let h, s, l = (max + min) / 2;
+
+                if (max === min) {
+                    h = s = 0;
+                } else {
+                    const d = max - min;
+                    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                    switch (max) {
+                        case r:
+                            h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
+                            break;
+                        case g:
+                            h = ((b - r) / d + 2) / 6;
+                            break;
+                        case b:
+                            h = ((r - g) / d + 4) / 6;
+                            break;
+                    }
+                }
+                return {
+                    h: Math.round(h * 360),
+                    s: Math.round(s * 100),
+                    l: Math.round(l * 100)
+                };
+            }
+
+            function updateColor(hex) {
+                if (!hex.startsWith('#')) hex = '#' + hex;
+                if (hex.length === 4) {
+                    hex = '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
+                }
+
+                const rgb = hexToRgb(hex);
+                if (!rgb) return;
+
+                const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+
+                colorPreview.style.backgroundColor = hex;
+                hexCode.textContent = hex.toLowerCase();
+                rgbCode.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+                hslCode.textContent = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+
+                addToHistory(hex.toLowerCase());
+
+                try {
+                    localStorage.setItem('lastColor', hex);
+                    localStorage.setItem('colorHistory', JSON.stringify(colorHistory));
+                } catch (e) { /* ignore */ }
+            }
+
+            // ============================================================
+            // HISTORY
+            // ============================================================
+            function addToHistory(color) {
+                colorHistory = colorHistory.filter(c => c !== color);
+                colorHistory.unshift(color);
+                if (colorHistory.length > 10) colorHistory.pop();
+                renderHistory();
+            }
+
+            function renderHistory() {
+                historyColors.innerHTML = '';
+                colorHistory.forEach(color => {
+                    const div = document.createElement('div');
+                    div.className = 'history-color';
+                    div.style.backgroundColor = color;
+                    div.title = color;
+
+                    const tooltip = document.createElement('span');
+                    tooltip.className = 'tooltip';
+                    tooltip.textContent = color;
+                    div.appendChild(tooltip);
+
+                    div.addEventListener('click', function() {
+                        colorPicker.value = color;
+                        updateColor(color);
+                        showToast(`✅ رنگ ${color} انتخاب شد`);
+                    });
+
+                    historyColors.appendChild(div);
+                });
+            }
+
+            // ============================================================
+            // TOAST
+            // ============================================================
             function showToast(message) {
-                toast.textContent = message || '✅ کد رنگ کپی شد!';
+                toast.textContent = message || '✅ کدها کپی شدند!';
                 toast.classList.add('show');
                 clearTimeout(toastTimeout);
                 toastTimeout = setTimeout(() => {
@@ -458,25 +875,20 @@
                 }, 2500);
             }
 
-            // انتخاب رنگ
-            colorPicker.addEventListener('input', function(e) {
-                updateColor(e.target.value);
-            });
-
-            // کپی کردن
-            copyBtn.addEventListener('click', function() {
-                const color = colorCode.textContent;
-
+            // ============================================================
+            // COPY FUNCTIONS
+            // ============================================================
+            function copyToClipboard(text, successMessage) {
                 if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(color)
-                        .then(() => showToast('✅ کد رنگ کپی شد!'))
-                        .catch(() => fallbackCopy(color));
+                    navigator.clipboard.writeText(text)
+                        .then(() => showToast(successMessage || '✅ کپی شد!'))
+                        .catch(() => fallbackCopy(text, successMessage));
                 } else {
-                    fallbackCopy(color);
+                    fallbackCopy(text, successMessage);
                 }
-            });
+            }
 
-            function fallbackCopy(text) {
+            function fallbackCopy(text, successMessage) {
                 try {
                     const textArea = document.createElement('textarea');
                     textArea.value = text;
@@ -487,19 +899,150 @@
                     textArea.select();
                     document.execCommand('copy');
                     document.body.removeChild(textArea);
-                    showToast('✅ کد رنگ کپی شد!');
+                    showToast(successMessage || '✅ کپی شد!');
                 } catch (err) {
                     showToast('❌ خطا در کپی کردن!');
                 }
             }
 
-            // تنظیم رنگ اولیه
-            window.addEventListener('load', function() {
-                updateColor(colorPicker.value);
+            // ============================================================
+            // SHARE FUNCTIONS
+            // ============================================================
+            function getCurrentColor() {
+                return hexCode.textContent;
+            }
+
+            function getShareText() {
+                const color = getCurrentColor();
+                return `🎨 رنگ ${color} را با ابزار کد هگز IESTM انتخاب کردم!`;
+            }
+
+            function getShareUrl() {
+                const color = getCurrentColor().replace('#', '');
+                return `https://iestmgit.github.io/Hex/?color=${color}`;
+            }
+
+            function shareOnTelegram() {
+                const text = encodeURIComponent(getShareText());
+                const url = encodeURIComponent(getShareUrl());
+                window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+            }
+
+            function shareOnTwitter() {
+                const text = encodeURIComponent(getShareText());
+                const url = encodeURIComponent(getShareUrl());
+                window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+            }
+
+            function shareOnWhatsapp() {
+                const text = encodeURIComponent(`${getShareText()} ${getShareUrl()}`);
+                window.open(`https://wa.me/?text=${text}`, '_blank');
+            }
+
+            // ============================================================
+            // THEME TOGGLE
+            // ============================================================
+            function toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                themeLabel.textContent = newTheme === 'dark' ? 'تم روشن' : 'تم تاریک';
+                themeToggle.innerHTML = newTheme === 'dark' ?
+                    '<i class="fas fa-sun"></i> تم روشن' :
+                    '<i class="fas fa-moon"></i> تم تاریک';
+
+                try {
+                    localStorage.setItem('theme', newTheme);
+                } catch (e) { /* ignore */ }
+            }
+
+            function loadTheme() {
+                try {
+                    const savedTheme = localStorage.getItem('theme');
+                    if (savedTheme) {
+                        document.documentElement.setAttribute('data-theme', savedTheme);
+                        themeLabel.textContent = savedTheme === 'dark' ? 'تم روشن' : 'تم تاریک';
+                        themeToggle.innerHTML = savedTheme === 'dark' ?
+                            '<i class="fas fa-sun"></i> تم روشن' :
+                            '<i class="fas fa-moon"></i> تم تاریک';
+                    }
+                } catch (e) { /* ignore */ }
+            }
+
+            // ============================================================
+            // EVENT LISTENERS
+            // ============================================================
+
+            colorPicker.addEventListener('input', function(e) {
+                updateColor(e.target.value);
             });
+
+            copyBtn.addEventListener('click', function() {
+                const text = `${hexCode.textContent} | ${rgbCode.textContent} | ${hslCode.textContent}`;
+                copyToClipboard(text, '✅ همه کدها کپی شدند!');
+            });
+
+            document.querySelectorAll('.copy-mini').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        copyToClipboard(targetEl.textContent, `✅ ${targetId.toUpperCase()} کپی شد!`);
+                    }
+                });
+            });
+
+            document.getElementById('shareTelegram').addEventListener('click', shareOnTelegram);
+            document.getElementById('shareTwitter').addEventListener('click', shareOnTwitter);
+            document.getElementById('shareWhatsapp').addEventListener('click', shareOnWhatsapp);
+
+            document.getElementById('shareCopyLink').addEventListener('click', function() {
+                const url = getShareUrl();
+                copyToClipboard(url, '✅ لینک کپی شد!');
+            });
+
+            themeToggle.addEventListener('click', toggleTheme);
+
+            // ============================================================
+            // INITIALIZATION
+            // ============================================================
+            function init() {
+                loadTheme();
+
+                try {
+                    const savedHistory = localStorage.getItem('colorHistory');
+                    if (savedHistory) {
+                        const parsed = JSON.parse(savedHistory);
+                        if (Array.isArray(parsed) && parsed.length > 0) {
+                            colorHistory = parsed;
+                            renderHistory();
+                        }
+                    }
+
+                    const lastColor = localStorage.getItem('lastColor');
+                    if (lastColor) {
+                        colorPicker.value = lastColor;
+                        updateColor(lastColor);
+                    } else {
+                        updateColor(colorPicker.value);
+                    }
+                } catch (e) {
+                    updateColor(colorPicker.value);
+                }
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const colorParam = urlParams.get('color');
+                if (colorParam && /^[0-9a-f]{6}$/i.test(colorParam)) {
+                    const hex = '#' + colorParam;
+                    colorPicker.value = hex;
+                    updateColor(hex);
+                }
+            }
+
+            init();
 
         })();
     </script>
 
 </body>
-</html>
+</html>v
